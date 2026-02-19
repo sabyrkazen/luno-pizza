@@ -3,7 +3,7 @@ import Logo from '/images/pizza-logo.svg'
 const App = () => {
   return (
     <div className="wrapper">
-      <div className="header">
+      <header className="header">
         <div className="container">
           <div className="header__logo">
             <img width={38} src={Logo} alt="Pizza logo" />
@@ -12,7 +12,7 @@ const App = () => {
               <p>самая вкусная пицца во вселенной</p>
             </div>
           </div>
-          <div className="header__cart">
+          <nav className="header__cart" aria-label="Корзина">
             <a href="/cart.html" className="button button--cart">
               <span>520 ₽</span>
               <div className="button__delimiter"></div>
@@ -47,13 +47,14 @@ const App = () => {
               </svg>
               <span>3</span>
             </a>
-          </div>
+          </nav>
         </div>
-      </div>
-      <div className="content">
+      </header>
+
+      <main className="content">
         <div className="container">
-          <div className="content__top">
-            <div className="categories">
+          <section className="content__top" aria-label="Фильтры и сортировка">
+            <nav className="categories" aria-label="Категории пиццы">
               <ul>
                 <li className="active">Все</li>
                 <li>Мясные</li>
@@ -62,8 +63,9 @@ const App = () => {
                 <li>Острые</li>
                 <li>Закрытые</li>
               </ul>
-            </div>
-            <div className="sort">
+            </nav>
+
+            <section className="sort" aria-label="Сортировка">
               <div className="sort__label">
                 <svg
                   width={10}
@@ -80,60 +82,72 @@ const App = () => {
                 <b>Сортировка по:</b>
                 <span>популярности</span>
               </div>
-              <div className="sort__popup">
+
+              <nav className="sort__popup" aria-label="Варианты сортировки">
                 <ul>
                   <li className="active">популярности</li>
                   <li>цене</li>
                   <li>алфавиту</li>
                 </ul>
-              </div>
-            </div>
-          </div>
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">
-            {[...Array(10)].map((_, i) => (
-              <div key={i} className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="/images/pizza.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 395 ₽</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width={12}
-                      height={12}
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
+              </nav>
+            </section>
+          </section>
+
+          <section aria-labelledby="pizza-list-title">
+            <h2 id="pizza-list-title" className="content__title">
+              Все пиццы
+            </h2>
+
+            <div className="content__items">
+              {[...Array(10)].map((_, i) => (
+                <article key={i} className="pizza-block">
+                  <img
+                    className="pizza-block__image"
+                    src="/images/pizza.jpg"
+                    alt="Pizza"
+                  />
+                  <h4 className="pizza-block__title">Чизбургер-пицца</h4>
+
+                  <section
+                    className="pizza-block__selector"
+                    aria-label="Параметры пиццы"
+                  >
+                    <ul>
+                      <li className="active">тонкое</li>
+                      <li>традиционное</li>
+                    </ul>
+                    <ul>
+                      <li className="active">26 см.</li>
+                      <li>30 см.</li>
+                      <li>40 см.</li>
+                    </ul>
+                  </section>
+
+                  <div className="pizza-block__bottom">
+                    <p className="pizza-block__price">от 395 ₽</p>
+                    <button type="button" className="button button--outline button--add">
+                      <svg
+                        width={12}
+                        height={12}
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <span>Добавить</span>
+                      <i>2</i>
+                    </button>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </article>
+              ))}
+            </div>
+          </section>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
