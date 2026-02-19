@@ -93,7 +93,11 @@ const App = () => {
           <div className="content__items">
             {[...Array(10)].map((_, i) => (
               <div key={i} className="pizza-block">
-                <img className="pizza-block__image" src="" alt="Pizza" />
+                <img
+                  className="pizza-block__image"
+                  src="/images/pizza.jpg"
+                  alt="Pizza"
+                />
                 <h4 className="pizza-block__title">Чизбургер-пицца</h4>
                 <div className="pizza-block__selector">
                   <ul>
