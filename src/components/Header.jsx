@@ -13,7 +13,7 @@ export const Header = () => {
           </div>
         </div>
         <nav className="header__cart" aria-label="Корзина">
-          <CartButton />
+          <CartButton children="520 ₽" outline />
         </nav>
       </div>
     </header>
